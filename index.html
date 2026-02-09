@@ -1216,6 +1216,12 @@
 
         // Function to handle accepting the proposal
         function acceptProposal() {
+            // Hide the No button explicitly
+            const noButton = document.getElementById('noButton');
+            if (noButton) {
+                noButton.style.display = 'none';
+            }
+
             showTransitionGif();
             // Start confetti
             startConfetti();
