@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Special 💕</title>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         /* Base styles and reset */
         * {
@@ -13,8 +18,8 @@
         }
 
         body {
-            font-family: 'Arial Rounded MT Bold', 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ffd8cb);
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
@@ -57,12 +62,15 @@
                 transform: translateY(100vh) rotate(-45deg);
                 opacity: 0;
             }
+
             10% {
                 opacity: 1;
             }
+
             90% {
                 opacity: 1;
             }
+
             100% {
                 transform: translateY(-100px) rotate(-45deg);
                 opacity: 0;
@@ -82,7 +90,7 @@
             cursor: pointer;
             font-size: 20px;
             z-index: 1000;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Main container */
@@ -97,6 +105,7 @@
         }
 
         /* Page sections */
+        /* Page sections with Glassmorphism */
         .page {
             width: 100%;
             text-align: center;
@@ -104,6 +113,15 @@
             opacity: 0;
             transform: scale(0.9);
             transition: all 0.5s ease;
+
+            /* Glassmorphism */
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         }
 
         .page.active {
@@ -114,33 +132,34 @@
 
         /* Proposal page styles */
         #proposalPage h1 {
-            font-size: 2.5rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
             color: #d81b60;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
             animation: pulse 2s infinite;
         }
-        
+
         .no-gif-container {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
+            /* Now inline above the text */
+            margin: 0 auto 20px auto;
+            text-align: center;
+            min-height: 150px;
             display: none;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-            animation: fadeInOut 2s ease;
+            position: relative;
+            /* Reset from fixed */
+            top: auto;
+            left: auto;
+            transform: none;
+            z-index: 10;
         }
-        
+
         .no-gif-container img {
             max-width: 200px;
             max-height: 200px;
             border-radius: 10px;
         }
-        
+
         .yes-gif-container {
             position: fixed;
             top: 50%;
@@ -151,27 +170,81 @@
             background: rgba(255, 255, 255, 0.9);
             padding: 15px;
             border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             animation: fadeInOut 3s ease;
         }
-        
+
+        .transition-gif-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeInOut 2s ease;
+        }
+
+        .transition-gif-container img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+        }
+
+        .question-header-gif {
+            margin: 10px auto;
+            text-align: center;
+        }
+
+        .question-header-gif img {
+            max-width: 80px;
+            max-height: 80px;
+            border-radius: 8px;
+        }
+
         .yes-gif-container img {
             max-width: 250px;
             max-height: 250px;
             border-radius: 10px;
         }
-        
+
         @keyframes fadeInOut {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
+
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.5);
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         .buttons-container {
@@ -183,33 +256,39 @@
         }
 
         .btn {
-            padding: 15px 30px;
+            padding: 15px 40px;
             border: none;
             border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-weight: 800;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn-yes {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            background: linear-gradient(45deg, #ff6b6b, #ee5253);
             color: white;
-            min-width: 120px;
+            min-width: 140px;
         }
 
         .btn-yes:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            animation: bounce 0.6s ease-in-out;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
         }
 
         .btn-no {
-            background: linear-gradient(45deg, #a8e6cf, #dcedc1);
-            color: #333;
-            min-width: 120px;
+            background: white;
+            color: #ff6b6b;
+            min-width: 140px;
             position: relative;
+        }
+
+        .btn-no:hover {
+            background: #f8f9fa;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .message {
@@ -217,6 +296,21 @@
             font-size: 1.1rem;
             color: #d81b60;
             min-height: 30px;
+        }
+
+        .message-on-yes {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            color: #d81b60;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
         }
 
         /* Pre-quiz page styles */
@@ -239,7 +333,7 @@
             padding: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             min-height: 120px;
             display: flex;
             align-items: center;
@@ -248,14 +342,14 @@
             font-weight: bold;
             color: #d81b60;
         }
-        
+
         .question-box.hidden {
             display: none;
         }
 
         .question-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             background: linear-gradient(45deg, #ff9aa2, #ffb3ba);
         }
 
@@ -289,7 +383,7 @@
             padding: 20px;
             border-radius: 15px;
             margin: 20px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .question-text {
@@ -340,17 +434,39 @@
         }
 
         @keyframes correctAnswer {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes wrongAnswer {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            50% { transform: translateX(10px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
 
         .quiz-message {
@@ -369,7 +485,7 @@
             animation: fadeInScale 0.5s ease;
             text-align: center;
         }
-        
+
         .gif-placeholder-small {
             margin: 10px 0;
             padding: 10px;
@@ -378,13 +494,13 @@
             text-align: center;
             animation: fadeInScale 0.3s ease;
         }
-        
+
         .gif-placeholder-small img {
             max-width: 100px;
             max-height: 100px;
             border-radius: 5px;
         }
-        
+
         .answer-media {
             margin: 15px 0;
             padding: 15px;
@@ -393,13 +509,13 @@
             text-align: center;
             animation: fadeInScale 0.5s ease;
         }
-        
+
         .answer-media img {
             margin: 5px;
-            max-width: 120px !important;
-            max-height: 120px !important;
+            max-width: 360px !important;
+            max-height: 360px !important;
         }
-        
+
         .remaining-questions {
             margin: 20px 0;
             padding: 15px;
@@ -408,12 +524,12 @@
             text-align: center;
             display: none;
         }
-        
+
         .remaining-questions.show {
             display: block;
             animation: fadeInScale 0.5s ease;
         }
-        
+
         .remaining-btn {
             background: linear-gradient(45deg, #90ee90, #b2f2bb);
             color: #2e7d32;
@@ -425,10 +541,28 @@
             font-weight: bold;
             transition: all 0.3s ease;
         }
-        
+
         .remaining-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gift-button {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .gift-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
         .photo-placeholder.show {
@@ -461,44 +595,77 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 2rem;
+            padding: 10px;
         }
 
         .gallery-item {
-            aspect-ratio: 1;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            animation: fadeIn 1s ease;
-            overflow: hidden;
+            background: white;
+            padding: 15px 15px 40px 15px;
+            /* Polaroid style bottom padding */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            transform: rotate(-2deg);
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
-        
+
+        .gallery-item:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
         .gallery-item img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1/1;
             object-fit: cover;
-            border-radius: 10px;
+            border: 1px solid #eee;
         }
 
         /* Animations */
         @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         /* Responsive design */
@@ -506,101 +673,104 @@
             .container {
                 padding: 10px;
             }
-            
+
             #proposalPage h1 {
                 font-size: 2rem;
                 margin-bottom: 2rem;
             }
-            
-            #preQuizPage h2, #quizPage h2 {
+
+            #preQuizPage h2,
+            #quizPage h2 {
                 font-size: 1.5rem;
             }
-            
+
             .questions-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-            
+
             .question-box {
                 min-height: 100px;
                 padding: 15px;
                 font-size: 1rem;
             }
-            
+
             .question-detail {
                 padding: 10px;
             }
-            
-            .gif-placeholder-small, .answer-media, .remaining-questions {
+
+            .gif-placeholder-small,
+            .answer-media,
+            .remaining-questions {
                 padding: 8px;
                 margin: 8px 0;
             }
-            
+
             .gif-placeholder-small img {
                 max-width: 80px;
                 max-height: 80px;
             }
-            
+
             .answer-media img {
-                max-width: 100px !important;
-                max-height: 100px !important;
+                max-width: 300px !important;
+                max-height: 300px !important;
             }
-            
+
             .remaining-btn {
                 padding: 8px 15px;
                 font-size: 0.9rem;
                 margin: 3px;
             }
-            
+
             .btn {
                 padding: 12px 20px;
                 font-size: 1rem;
                 margin-bottom: 10px;
             }
-            
+
             .buttons-container {
                 flex-direction: column;
                 align-items: center;
                 gap: 15px;
             }
-            
+
             .btn-no {
                 width: 120px;
             }
-            
+
             .question-text {
                 font-size: 1.1rem;
                 margin-bottom: 15px;
             }
-            
+
             .option-btn {
                 padding: 12px 15px;
                 font-size: 0.9rem;
             }
-            
+
             .option-letter {
                 font-size: 1rem;
                 min-width: 25px;
             }
-            
+
             .love-message {
                 font-size: 1.1rem;
                 padding: 15px;
             }
-            
+
             .gallery {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
                 gap: 10px;
             }
-            
+
             .gallery-item {
                 font-size: 1rem;
             }
-            
+
             .photo-placeholder {
                 padding: 15px;
             }
-            
+
             .photo-placeholder p {
                 font-size: 0.9rem;
             }
@@ -610,29 +780,32 @@
             #proposalPage h1 {
                 font-size: 1.5rem;
             }
-            
+
             .btn {
                 padding: 10px 15px;
                 font-size: 0.9rem;
                 width: 100%;
                 max-width: 200px;
             }
-            
-            #preQuizPage h2, #quizPage h2 {
+
+            #preQuizPage h2,
+            #quizPage h2 {
                 font-size: 1.3rem;
             }
-            
+
             .question-box {
                 min-height: 80px;
                 padding: 12px;
                 font-size: 0.9rem;
             }
-            
-            .gif-placeholder-small, .answer-media, .remaining-questions {
+
+            .gif-placeholder-small,
+            .answer-media,
+            .remaining-questions {
                 padding: 8px;
                 margin: 8px 0;
             }
-            
+
             .remaining-btn {
                 padding: 6px 12px;
                 font-size: 0.8rem;
@@ -640,66 +813,69 @@
                 width: 100%;
                 max-width: 150px;
             }
-            
+
             .question-text {
                 font-size: 1rem;
             }
-            
+
             .option-btn {
                 padding: 10px 12px;
                 font-size: 0.85rem;
             }
-            
+
             #finalPage h1 {
                 font-size: 1.8rem;
             }
-            
+
             .love-message {
                 font-size: 1rem;
             }
         }
-        
+
         /* Mobile specific optimizations */
         @media (max-width: 480px) {
             .container {
                 padding: 15px;
             }
-            
-            .question-container, .question-detail {
+
+            .question-container,
+            .question-detail {
                 padding: 15px;
             }
-            
+
             .options-container {
                 gap: 8px;
             }
-            
+
             .quiz-message {
                 font-size: 0.9rem;
             }
-            
+
             .message {
                 font-size: 1rem;
             }
-            
+
             .question-box {
                 min-height: 70px;
             }
-            
-            .gif-placeholder-small, .answer-media, .remaining-questions {
+
+            .gif-placeholder-small,
+            .answer-media,
+            .remaining-questions {
                 padding: 6px;
                 margin: 6px 0;
             }
-            
+
             .gif-placeholder-small img {
                 max-width: 60px;
                 max-height: 60px;
             }
-            
+
             .answer-media img {
-                max-width: 80px !important;
-                max-height: 80px !important;
+                max-width: 240px !important;
+                max-height: 240px !important;
             }
-            
+
             .remaining-btn {
                 padding: 5px 10px;
                 font-size: 0.75rem;
@@ -707,6 +883,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Background music element -->
     <audio id="backgroundMusic" loop>
@@ -723,216 +900,206 @@
     <div class="container">
         <!-- Proposal Page -->
         <section id="proposalPage" class="page active">
+            <!-- Container for GIFs when No is clicked - MOVED ABOVE HEADER -->
+            <div class="no-gif-container" id="noGifContainer">
+                <img src="gallery/angry3.gif" alt="No GIF" id="noGifImage" style="max-height: 200px; width: auto;"
+                    onerror="this.style.display='none';">
+            </div>
+
             <h1>Will you be my Valentine? 💕</h1>
             <div class="buttons-container">
-                <button class="btn btn-yes" onclick="acceptProposal()">Yes</button>
+                <div style="position: relative; display: inline-block;">
+                    <button class="btn btn-yes" id="yesButton" onclick="acceptProposal()">Yes</button>
+                    <div class="message-on-yes" id="messageOnYes" style="display: none;"></div>
+                </div>
                 <button class="btn btn-no" id="noButton">No</button>
             </div>
             <div class="message" id="proposalMessage"></div>
-            
-            <!-- Container for GIFs when No is clicked -->
-            <div class="no-gif-container" id="noGifContainer">
-                <img src="gallery/angry3.gif" alt="No GIF" id="noGifImage" style="max-width: 100%; height: auto;" onerror="this.style.display='none';">
-            </div>
         </section>
 
         <!-- Pre-Quiz Page -->
         <section id="preQuizPage" class="page">
-            <h2>Get Ready for the Quiz! 💌</h2>
-            <p style="margin-bottom: 20px; font-size: 1.1rem; color: #d81b60;">Click on each question to reveal it!</p>
-            
-            <!-- Container for GIF when Yes is clicked -->
-            <div class="yes-gif-container" id="yesGifContainer">
-                <img src="gallery/Kisses Love GIF.gif" alt="Yes GIF" id="yesGifImage" style="max-width: 100%; height: auto;" onerror="this.style.display='none';">
-            </div>
-            
+            <h2>Get Ready for A Quiz! 💌</h2>
+            <p style="margin-bottom: 20px; font-size: 1.1rem; color: #d81b60; font-weight: bold;">Click on each question
+                to reveal it!</p>
+
             <div class="questions-grid">
                 <div class="question-box" onclick="revealQuestion(1)">
                     <div>Question 1</div>
+                    <!-- GIF above Question 1 -->
+                    <div class="question-header-gif">
+                        <img src="gallery/q1 (1).gif" alt="Question 1 Header" onerror="this.style.display='none';">
+                    </div>
                     <div class="question-detail" id="detail1">
                         <!-- GIF placeholder for Question 1 -->
                         <div class="gif-placeholder-small" id="gif1" style="display: none;">
-                            <img src="gallery/gif.gif" alt="" style="max-width: 100%; height: auto; border-radius: 5px;" onerror="this.style.display='none';">
-                            
+                            <img src="gallery/gif.gif" alt="Question 1 GIF"
+                                style="max-width: 100%; height: auto; border-radius: 5px;"
+                                onerror="this.style.display='none';">
+
                         </div>
                         <div class="question-text">A. What's my favorite way to spend time with you?</div>
                         <div class="options-container">
-                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">A</span> Watching scary movies 😱</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">B</span> Arguing about everything 🤬</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 1, 'correct')"><span class="option-letter">C</span> Just cuddling and talking 💕</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">D</span> Playing video games 🎮</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span
+                                    class="option-letter">A</span> Watching scary movies 😱</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span
+                                    class="option-letter">B</span> Arguing about everything 🤬</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1, 'correct')"><span
+                                    class="option-letter">C</span> Just cuddling and talking 💕</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span
+                                    class="option-letter">D</span> Playing video games 🎮</button>
                         </div>
                         <div class="quiz-message" id="message1"></div>
                         <!-- GIF and picture placeholder after correct answer -->
                         <div class="answer-media" id="media1" style="display: none; margin-top: 15px;">
-                            <img src="" alt="Special Picture 1" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <img src="" alt="Celebration GIF 1" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <p>💕 First question complete! So proud of you! 💕</p>
+                            <img src="gallery/Cat Love GIF by NGcorpvtc.gif" alt="Celebration GIF 1"
+                                style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;">
+                            <p>💕 So proud of you! 💕</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-box" onclick="revealQuestion(2)">
                     <div>Question 2</div>
+                    <!-- GIF above Question 2 -->
+                    <div class="question-header-gif">
+                        <img src="gallery/q1 (2).gif" alt="Question 2 Header" onerror="this.style.display='none';">
+                    </div>
                     <div class="question-detail" id="detail2">
                         <!-- GIF placeholder for Question 2 -->
                         <div class="gif-placeholder-small" id="gif2" style="display: none;">
-                            <img src="" alt="Cute GIF 2" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.style.display='none';">
-                            <p>🐶 Playful Puppy for Question 2! 🐶</p>
+                            <img src="" alt="Question 2 GIF" style="max-width: 100%; height: auto; border-radius: 10px;"
+                                onerror="this.style.display='none';">
                         </div>
-                        <div class="question-text">B. What makes me happiest about us?</div>
+                        <div class="question-text">B. What is my addiction?</div>
                         <div class="options-container">
-                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">A</span> Your cooking skills 👨‍🍳</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 2, 'correct')"><span class="option-letter">B</span> The way you always make me smile 😊</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">C</span> Our travel adventures ✈️</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">D</span> Shopping together 🛍️</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span
+                                    class="option-letter">A</span> FOOD 👨‍🍳</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2, 'correct')"><span
+                                    class="option-letter">B</span> YOU😊</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span
+                                    class="option-letter">C</span> Travel adventures ✈️</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span
+                                    class="option-letter">D</span> FASHION 🛍️</button>
                         </div>
                         <div class="quiz-message" id="message2"></div>
-                        <!-- GIF and picture placeholder after correct answer -->
+                        <!-- Picture placeholder after correct answer -->
                         <div class="answer-media" id="media2" style="display: none; margin-top: 15px;">
-                            <img src="" alt="Special Picture 2" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <img src="" alt="Celebration GIF 2" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <p>💖 Second question down! You're amazing! 💖</p>
+                            <img src="gallery/qa2.jpeg" alt="Special Picture 2"
+                                style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;">
+                            <p>💖 GoldFlake could Never💖</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="question-box" onclick="revealQuestion(3)">
                     <div>Question 3</div>
+                    <!-- GIF above Question 3 -->
+                    <div class="question-header-gif">
+                        <img src="gallery/q1 (3).gif" alt="Question 3 Header" onerror="this.style.display='none';">
+                    </div>
                     <div class="question-detail" id="detail3">
                         <!-- GIF placeholder for Question 3 -->
                         <div class="gif-placeholder-small" id="gif3" style="display: none;">
-                            <img src="" alt="Cute GIF 3" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.style.display='none';">
-                            <p>🐰 Fluffy Bunny for Question 3! 🐰</p>
+                            <img src="" alt="Question 3 GIF" style="max-width: 100%; height: auto; border-radius: 10px;"
+                                onerror="this.style.display='none';">
                         </div>
-                        <div class="question-text">C. What's the most special thing about our relationship?</div>
+                        <div class="question-text">C. What are my life goals?</div>
                         <div class="options-container">
-                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">A</span> Our shared love of food 🍕</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">B</span> Our competitive nature 🏆</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">C</span> Our inside jokes 😂</button>
-                            <button class="option-btn" onclick="checkAnswer(this, 3, 'correct')"><span class="option-letter">D</span> How perfectly we complement each other 💞</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span
+                                    class="option-letter">A</span> BE A MILLIONAIRE💰</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span
+                                    class="option-letter">B</span> BE AN ACTOR</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span
+                                    class="option-letter">C</span> BE A YOUTUBER 📺</button>
+                            <button class="option-btn" onclick="checkAnswer(this, 3, 'correct')"><span
+                                    class="option-letter">D</span> Give u the world 💞</button>
                         </div>
                         <div class="quiz-message" id="message3"></div>
-                        <!-- GIF and picture placeholder after correct answer -->
+                        <!-- Picture placeholder after correct answer -->
                         <div class="answer-media" id="media3" style="display: none; margin-top: 15px;">
-                            <img src="" alt="Special Picture 3" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <img src="" alt="Celebration GIF 3" style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;" onerror="this.style.display='none';">
-                            <p>💞 Third question complete! Now onto the finale! 💞</p>
+                            <img src="gallery/qa3.jpeg" alt="Special Picture 3"
+                                style="max-width: 100%; height: auto; border-radius: 10px; margin: 10px 0;">
+                            <p>💞 me literally from the moon! 💞</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Remaining questions section -->
             <div class="remaining-questions" id="remainingQuestions">
                 <h3>Answer the remaining questions! 💕</h3>
                 <div id="remainingButtons"></div>
             </div>
-            
-            <div class="photo-placeholder" id="photoPlaceholder">
-                <!-- TODO: Insert your own photo here -->
-                <img src="" alt="Special Moment" style="max-width: 100%; height: auto; display: none;" id="specialPhoto">
-                <p>Look at this special moment we share! 📸💕</p>
-                <p>Replace the image source with your own photo after giving the right answer!</p>
+
+            <!-- Gift section - shown after all questions answered -->
+            <div class="gift-section" id="giftSection" style="display: none; text-align: center; margin: 30px 0;">
+                <h3>Congratulations! You've unlocked a special gift! 🎁</h3>
+                <button class="gift-button" onclick="openGift()">Open Your Gift! 💝</button>
             </div>
         </section>
 
-        <!-- Quiz Page -->
-        <section id="quizPage" class="page">
-            <h2>Just one little quiz 💌</h2>
-            <div id="quizContainer">
-                <!-- Question 1 -->
-                <div class="question-container" id="question1">
-                    <div class="question-text">A. What's my favorite way to spend time with you?</div>
-                    <div class="options-container">
-                        <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">A</span> Watching scary movies 😱</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">B</span> Arguing about everything 🤬</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 1, 'correct')"><span class="option-letter">C</span> Just cuddling and talking 💕</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 1, 'wrong')"><span class="option-letter">D</span> Playing video games 🎮</button>
-                    </div>
-                    <div class="quiz-message" id="message1"></div>
-                </div>
-
-                <!-- Question 2 -->
-                <div class="question-container" id="question2" style="display: none;">
-                    <div class="question-text">B. What makes me happiest about us?</div>
-                    <div class="options-container">
-                        <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">A</span> Your cooking skills 👨‍🍳</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 2, 'correct')"><span class="option-letter">B</span> The way you always make me smile 😊</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">C</span> Our travel adventures ✈️</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 2, 'wrong')"><span class="option-letter">D</span> Shopping together 🛍️</button>
-                    </div>
-                    <div class="quiz-message" id="message2"></div>
-                </div>
-
-                <!-- Question 3 -->
-                <div class="question-container" id="question3" style="display: none;">
-                    <div class="question-text">C. What's the most special thing about our relationship?</div>
-                    <div class="options-container">
-                        <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">A</span> Our shared love of food 🍕</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">B</span> Our competitive nature 🏆</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 3, 'wrong')"><span class="option-letter">C</span> Our inside jokes 😂</button>
-                        <button class="option-btn" onclick="checkAnswer(this, 3, 'correct')"><span class="option-letter">D</span> How perfectly we complement each other 💞</button>
-                    </div>
-                    <div class="quiz-message" id="message3"></div>
-                </div>
-
-                <!-- Photo placeholder that appears after correct answer -->
-                <div class="photo-placeholder" id="photoPlaceholder">
-                    <!-- TODO: Insert your own photo here -->
-                    <img src="" alt="Special Moment" style="max-width: 100%; height: auto; display: none;" id="specialPhoto">
-                    <p>Look at this special moment we share! 📸💕</p>
-                    <p>Replace the image source with your own photo after giving the right answer!</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Final Love Page -->
         <section id="finalPage" class="page">
             <h1>You did it! My forever Valentine 💖</h1>
             <div class="love-message">
                 <p>My dearest Valentine,</p>
-                <p>Thank you for saying yes to being mine, for answering all the questions perfectly, and for being the most amazing person in my life.</p>
-                <p>Every day with you feels like Valentine's Day, and I can't wait to share countless more moments, laughs, and loves with you.</p>
+                <p>Thank you for saying yes to being mine, for answering all the questions perfectly, and for being the
+                    most amazing person in my life.</p>
+                <p>Every day with you feels like Valentine's Day, and I can't wait to share countless more moments,
+                    laughs, and loves with you.</p>
                 <p>You are my sunshine, my joy, my home. Happy Valentine's Day, now and forever!</p>
                 <p>With all my love, 💕</p>
                 <p>Your devoted admirer</p>
             </div>
-            
-            <h2 style="color: #d81b60; margin: 20px 0; font-size: 1.8rem;">US 💕</h2>
-            
+
+            <h2 style="color: #d81b60; margin: 20px 0; font-size: 1.8rem;">JUST US 💕</h2>
+
             <div class="gallery">
                 <!-- GIF placeholders in the gallery -->
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 1" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💖 Love Story</span>';">
+                    <img src="gallery/g1.jpeg" alt="Love GIF 1"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 2" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💕 Happy Moments</span>';">
+                    <img src="gallery/g2.jpeg" alt="Love GIF 2"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 3" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💞 Forever Yours</span>';">
+                    <img src="gallery/g3.jpeg" alt="Love GIF 3"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 4" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💝 Cherished Times</span>';">
+                    <img src="gallery/g4.jpeg" alt="Love GIF 3"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 5" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💘 Sweet Memories</span>';">
+                    <img src="gallery/g5.jpeg" alt="Love GIF 3"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
                 <div class="gallery-item">
-                    <img src="" alt="Love GIF 6" style="max-width: 100%; height: auto; border-radius: 10px;" onerror="this.parentElement.innerHTML='<span>💞 Always & Forever</span>';">
+                    <img src="gallery/g6.jpeg" alt="Love GIF 3"
+                        style="max-width: 100%; height: auto; border-radius: 10px;">
                 </div>
-                <!-- Image placeholders - add your own romantic images/GIFs here -->
-                <div class="gallery-item"> romanticaaaaal </div>
-                <div class="gallery-item"> cute couple </div>
-                <div class="gallery-item"> love story </div>
-                <div class="gallery-item"> happy ever after </div>
-                <div class="gallery-item"> cherish moments </div>
-                <div class="gallery-item"> valentine memories </div>
-                <!-- TODO: Replace these placeholders with actual image/GIF elements -->
-                <!-- Example: <img src="your-image.jpg" alt="Romantic moment" style="width: 100%; height: 100%; object-fit: cover;"> -->
             </div>
         </section>
     </div>
+
+    <!-- Transition GIF Container (Moved out of hidden sections) -->
+    <div class="transition-gif-container" id="transitionGifContainer">
+        <img src="gallery/Kisses Love GIF.gif" alt="Transition GIF" id="transitionGifImage"
+            style="max-width: 100%; height: auto;" onerror="this.style.display='none';">
+    </div>
+
+    <!-- Yes GIF Container (Legacy, keeping just in case) -->
+    <div class="yes-gif-container" id="yesGifContainer">
+        <img src="gallery/Kisses Love GIF.gif" alt="Yes GIF" id="yesGifImage" style="max-width: 100%; height: auto;"
+            onerror="this.style.display='none';">
+    </div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confettiCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;"></canvas>
 
     <script>
         // Global variables to track game state
@@ -943,22 +1110,22 @@
         let revealedQuestions = 0;
         let currentRevealedQuestion = null;
         let answeredQuestions = new Set();
+        let confettiInterval;
 
         // Messages for the proposal page
         const noMessages = [
-            "Hey… that hurt 🥺",
-            "Try again 😏",
-            "You know you want to 💖",
-            "Just one more try 😇",
-            "Okay, last chance! 😭"
+            "Kenooooo 🥺",
+            "Areyyy Abr 😒",
+            "MAT KAR LALA! MAT KAR",
+            "Pitti pittii korbo 😇"
         ];
 
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Set up the "No" button event listener
             const noButton = document.getElementById('noButton');
             noButton.addEventListener('click', moveNoButton);
-            
+
             // Create floating hearts
             createHearts();
         });
@@ -966,67 +1133,105 @@
         // Function to move the "No" button to a random position
         function moveNoButton() {
             const button = document.getElementById('noButton');
-            const container = document.querySelector('.buttons-container');
-            
-            // Get container dimensions
-            const containerRect = container.getBoundingClientRect();
+
+            // Move to body to ensure fixed positioning works relative to viewport
+            if (button.parentNode !== document.body) {
+                document.body.appendChild(button);
+            }
+            button.style.zIndex = "9999"; // Ensure it stays on top
+
+            // Update click count
+            noClickCount++;
+            const messageElement = document.getElementById('proposalMessage');
+            const messageOnYes = document.getElementById('messageOnYes');
+
+            // Make Yes button significantly bigger each time No is clicked
+            yesButtonScale += 0.3;
+            const yesButton = document.getElementById('yesButton');
+            yesButton.style.transform = `scale(${yesButtonScale})`;
+
+            // If Yes button is too big, show message on top of it instead of below
+            if (yesButtonScale > 2) {
+                messageOnYes.style.display = 'block';
+                messageElement.style.display = 'none';
+            } else {
+                messageOnYes.style.display = 'none';
+                messageElement.style.display = 'block';
+            }
+
+            // Show a GIF when No is clicked
+            showNoGif();
+
+            // Check if we reached the limit (5 clicks)
+            if (noClickCount >= 5) {
+                // Show the final message
+                if (yesButtonScale > 2) {
+                    document.getElementById('messageOnYes').textContent = "Okay, you're stubborn! Ha Boltei Hbe! 💖";
+                } else {
+                    messageElement.textContent = "Okay, you're stubborn! Ha Boltei Hbe! 💖";
+                }
+
+                // Hide the No button permanently
+                button.style.display = 'none';
+                return;
+            }
+
+            // Show corresponding message for clicks 1, 2, 3
+            if (noMessages.length > 0) {
+                const msgIndex = (noClickCount - 1) % noMessages.length;
+                if (yesButtonScale > 2) {
+                    document.getElementById('messageOnYes').textContent = noMessages[msgIndex];
+                } else {
+                    messageElement.textContent = noMessages[msgIndex];
+                }
+            }
+
+            // Move the button for the first 3 clicks
             const buttonRect = button.getBoundingClientRect();
-            
+
             // Calculate maximum positions to keep button within view
             const maxX = window.innerWidth - buttonRect.width - 20;
             const maxY = window.innerHeight - buttonRect.height - 20;
-            
+
             // Generate random position within bounds
             const newX = Math.floor(Math.random() * maxX);
             const newY = Math.floor(Math.random() * maxY);
-            
-            // Apply new position
+
+            // Apply new position (using fixed positioning as per previous logic)
             button.style.position = 'fixed';
-            button.style.left = `${newX}px`;
-            button.style.top = `${newY}px`;
-            
-            // Update message
-            noClickCount++;
-            const messageElement = document.getElementById('proposalMessage');
-            
-            // Make Yes button significantly bigger each time No is clicked
-            yesButtonScale += 0.3;
-            const yesButton = document.querySelector('.btn-yes');
-            yesButton.style.transform = `scale(${yesButtonScale})`;
-            
-            // Show a GIF when No is clicked
-            showNoGif();
-            
-            if (noClickCount >= 5) {
-                // Remove the button and highlight the yes button after 6 attempts
-                button.style.display = 'none';
-                const yesButton = document.querySelector('.btn-yes');
-                yesButton.style.animation = 'pulse 1s infinite';
-                messageElement.textContent = "Fine, I'll stop running! 😄 Just click the BIG YES button!";
-            } else {
-                // Show a random message
-                const randomIndex = Math.floor(Math.random() * Math.min(noClickCount, noMessages.length));
-                messageElement.textContent = noMessages[randomIndex];
-                
-                // Add a little animation to the button
-                button.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    button.style.transform = 'scale(1)';
-                }, 200);
-            }
+
+            // Constrain movement to stay somewhat visible/safe
+            const constrainedX = Math.max(20, Math.min(newX, window.innerWidth - buttonRect.width - 20));
+            const constrainedY = Math.max(100, Math.min(newY, window.innerHeight - buttonRect.height - 100));
+
+            button.style.left = `${constrainedX}px`;
+            button.style.top = `${constrainedY}px`;
+
+            // Add a little animation to the button
+            button.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 200);
         }
 
         // Function to handle accepting the proposal
         function acceptProposal() {
-            // Transition to pre-quiz page
-            showPage('preQuizPage');
+            showTransitionGif();
+            // Start confetti
+            startConfetti();
+
+            // Transition to pre-quiz page after a delay
+            setTimeout(() => {
+                showPage('preQuizPage');
+                stopConfetti();
+            }, 2000);
         }
 
         // Function to reveal questions in pre-quiz page
         function revealQuestion(questionNum) {
             // Hide all other questions first
             const allQuestionBoxes = document.querySelectorAll('.question-box');
-            
+
             allQuestionBoxes.forEach((box, index) => {
                 if (index + 1 !== questionNum) {
                     box.classList.add('hidden');
@@ -1034,24 +1239,24 @@
                     box.classList.remove('hidden');
                 }
             });
-            
+
             // Show only the selected question
             const questionBox = document.querySelector(`.question-box:nth-child(${questionNum})`);
             const detail = document.getElementById(`detail${questionNum}`);
-            
+
             // Only reveal if not already revealed
             if (!questionBox.classList.contains('revealed')) {
                 questionBox.classList.add('revealed');
                 detail.classList.add('show');
                 revealedQuestions++;
                 currentRevealedQuestion = questionNum;
-                
+
                 // Show GIF placeholder for this question
                 const gifPlaceholder = document.getElementById(`gif${questionNum}`);
                 if (gifPlaceholder) {
                     gifPlaceholder.style.display = 'block';
                 }
-                
+
                 // Add a little animation
                 questionBox.style.animation = 'bounce 0.5s ease';
                 setTimeout(() => {
@@ -1063,57 +1268,61 @@
         // Function to check quiz answers
         function checkAnswer(button, questionNum, correctness) {
             const optionButtons = button.parentElement.querySelectorAll('.option-btn');
-            
+
             // Disable all buttons for this question
             optionButtons.forEach(btn => {
                 btn.disabled = true;
             });
-            
+
             if (correctness === 'correct') {
                 // Mark correct answer
                 button.classList.add('correct');
-                
+
                 // Add to answered questions
                 answeredQuestions.add(questionNum);
-                
+
+                // Success confetti
+                fireConfettiBurst();
+
                 // Show success message
-                document.getElementById(`message${questionNum}`).textContent = 
-                    "Perfect! That's exactly right! 💖";
-                
-                // Show the photo placeholder after first correct answer
+                document.getElementById(`message${questionNum}`).textContent =
+                    "";
+
+                // Show photo placeholder after first correct answer
                 if (questionNum === 1) {
                     setTimeout(() => {
-                        document.getElementById('photoPlaceholder').classList.add('show');
+                        const ph = document.getElementById('photoPlaceholder');
+                        if (ph) ph.classList.add('show');
                     }, 1000);
                 }
-                
+
                 // Show media (picture and GIF) after correct answer
                 const mediaDiv = document.getElementById(`media${questionNum}`);
                 if (mediaDiv) {
                     mediaDiv.style.display = 'block';
                 }
-                
+
                 // Check if all questions are answered
                 setTimeout(() => {
                     if (answeredQuestions.size >= 3) {
-                        // All questions answered, transition to final page
+                        // All questions answered, show gift option
                         setTimeout(() => {
-                            showPage('finalPage');
-                        }, 2000);
+                            showGiftOption();
+                        }, 1000);
                     } else {
                         // Show remaining questions
                         showRemainingQuestions();
                     }
-                }, 1500);
-                
+                }, 2000);
+
             } else {
                 // Mark wrong answer
                 button.classList.add('wrong');
-                
+
                 // Show encouraging message
-                document.getElementById(`message${questionNum}`).textContent = 
+                document.getElementById(`message${questionNum}`).textContent =
                     "Not quite right, but I still love you! 💕 Try again!";
-                
+
                 // Re-enable buttons except the wrong one
                 setTimeout(() => {
                     optionButtons.forEach(btn => {
@@ -1130,10 +1339,10 @@
         function showRemainingQuestions() {
             const remainingDiv = document.getElementById('remainingQuestions');
             const buttonsContainer = document.getElementById('remainingButtons');
-            
+
             // Clear existing buttons
             buttonsContainer.innerHTML = '';
-            
+
             // Create buttons for unanswered questions
             for (let i = 1; i <= 3; i++) {
                 if (!answeredQuestions.has(i)) {
@@ -1147,15 +1356,15 @@
                             box.classList.remove('hidden');
                             box.classList.remove('revealed');
                         });
-                        
+
                         const allDetails = document.querySelectorAll('.question-detail');
                         allDetails.forEach(detail => {
                             detail.classList.remove('show');
                         });
-                        
+
                         // Hide remaining questions section
                         remainingDiv.classList.remove('show');
-                        
+
                         // Reveal the selected question
                         setTimeout(() => {
                             revealQuestion(i);
@@ -1164,7 +1373,7 @@
                     buttonsContainer.appendChild(btn);
                 }
             }
-            
+
             // Show the remaining questions section
             remainingDiv.classList.add('show');
         }
@@ -1175,10 +1384,10 @@
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
-            
+
             // Show the requested page
             document.getElementById(pageId).classList.add('active');
-            
+
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1187,20 +1396,13 @@
         function toggleMusic() {
             const musicBtn = document.querySelector('.music-toggle');
             const audio = document.getElementById('backgroundMusic');
-            
+
             if (!musicPlaying) {
-                // In a real implementation, you would set the src to an actual music file
-                // For now, we'll simulate the toggle
                 musicBtn.textContent = '🔇';
                 musicPlaying = true;
-                // Uncomment the lines below when you have actual music
-                // audio.src = 'your-valentine-music.mp3';
-                // audio.play();
             } else {
                 musicBtn.textContent = '🎵';
                 musicPlaying = false;
-                // audio.pause();
-                // audio.currentTime = 0;
             }
         }
 
@@ -1208,34 +1410,34 @@
         function createHearts() {
             const container = document.getElementById('heartsContainer');
             const heartCount = 20;
-            
+
             for (let i = 0; i < heartCount; i++) {
                 const heart = document.createElement('div');
                 heart.className = 'heart';
-                
+
                 // Random size
                 const size = Math.random() * 20 + 10;
                 heart.style.width = `${size}px`;
                 heart.style.height = `${size}px`;
-                
+
                 // Random position
                 heart.style.left = `${Math.random() * 100}vw`;
-                
+
                 // Random animation delay and duration
                 heart.style.animationDelay = `${Math.random() * 5}s`;
                 heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
-                
+
                 // Random color variation
                 const colors = ['rgba(255, 0, 85, 0.7)', 'rgba(255, 105, 180, 0.7)', 'rgba(255, 20, 147, 0.7)'];
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 heart.style.backgroundColor = color;
-                
+
                 container.appendChild(heart);
             }
         }
 
         // Add keyboard shortcuts for accessibility
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             // Allow pressing Enter on focused elements
             if (event.key === 'Enter') {
                 const activeElement = document.activeElement;
@@ -1244,61 +1446,162 @@
                 }
             }
         });
-        
+
         // Function to show GIF when No is clicked
         function showNoGif() {
             const noGifContainer = document.getElementById('noGifContainer');
             const noGifImage = document.getElementById('noGifImage');
-            
-            // Set different GIFs for each click count
+
+            // GIFs available in gallery/ folder
+            // We have: angry1.gif, angry2.gif, angry3.gif
             const noGifs = [
-                'gallery/angry3.gif',
-                'gallery/no2.gif',
-                'gallery/no3.gif',
-                'gallery/no4.gif',
-                'gallery/no5.gif'
+                'gallery/angry1.gif',
+                'gallery/angry2.gif',
+                'gallery/angry4.gif',
+                'gallery/angry3.gif'
             ];
-            
+
             // Pick a GIF based on the click count (cycling through available options)
             const gifIndex = (noClickCount - 1) % noGifs.length;
             noGifImage.src = noGifs[gifIndex];
-            
+
             // Show the container
             noGifContainer.style.display = 'block';
-            
+
             // Hide after animation completes
             setTimeout(() => {
                 noGifContainer.style.display = 'none';
             }, 2000);
         }
-        
+
         // Function to show GIF when Yes is clicked
         function showYesGif() {
             const yesGifContainer = document.getElementById('yesGifContainer');
             const yesGifImage = document.getElementById('yesGifImage');
-            
+
             // Set a GIF source for when Yes is clicked
             yesGifImage.src = 'gallery/Kisses Love GIF.gif';
-            
+
             // Show the container
             yesGifContainer.style.display = 'block';
-            
+
             // Hide after animation completes
             setTimeout(() => {
                 yesGifContainer.style.display = 'none';
             }, 3000);
         }
-        
-        // Override the acceptProposal function to show Yes GIF
-        function acceptProposal() {
-            // Show the Yes GIF
-            showYesGif();
-            
-            // Transition to pre-quiz page after a delay
+
+        // Function to show transition GIF
+        function showTransitionGif() {
+            const transitionContainer = document.getElementById('transitionGifContainer');
+            const transitionImage = document.getElementById('transitionGifImage');
+
+            // Set the transition GIF to Kisses Love GIF as requested
+            transitionImage.src = 'gallery/Kisses Love GIF.gif';
+
+            // Show the container
+            transitionContainer.style.display = 'block';
+
+            // Hide after animation completes
             setTimeout(() => {
-                showPage('preQuizPage');
-            }, 1000);
+                transitionContainer.style.display = 'none';
+            }, 3000);
         }
+
+        // Function to show gift option after all questions are answered
+        function showGiftOption() {
+            const remainingSection = document.getElementById('remainingQuestions');
+            const giftSection = document.getElementById('giftSection');
+
+            // Hide remaining questions
+            remainingSection.style.display = 'none';
+
+            // Show gift section
+            giftSection.style.display = 'block';
+        }
+
+        // Function to open the gift and show the final page
+        function openGift() {
+            // Show the final page
+            showPage('finalPage');
+
+            // Start confetti
+            startConfetti();
+        }
+
+        // Confetti Functionality
+        const confettiCanvas = document.getElementById('confettiCanvas');
+        const ctx = confettiCanvas.getContext('2d');
+        confettiCanvas.width = window.innerWidth;
+        confettiCanvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff', '#ffa500'];
+
+        function createParticle() {
+            const x = Math.random() * confettiCanvas.width;
+            const y = -10;
+            const size = Math.random() * 10 + 5;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const speedY = Math.random() * 3 + 2;
+            const speedX = Math.random() * 2 - 1;
+
+            particles.push({ x, y, size, color, speedY, speedX });
+        }
+
+        function updateConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.y += p.speedY;
+                p.x += p.speedX;
+
+                ctx.fillStyle = p.color;
+                ctx.fillRect(p.x, p.y, p.size, p.size);
+
+                if (p.y > confettiCanvas.height) {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+
+            if (particles.length < 100) { // Limit max particles
+                createParticle();
+            }
+        }
+
+        function startConfetti() {
+            if (confettiInterval) clearInterval(confettiInterval);
+            confettiInterval = setInterval(updateConfetti, 20);
+        }
+
+        function stopConfetti() {
+            clearInterval(confettiInterval);
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            particles = [];
+        }
+
+        function fireConfettiBurst() {
+            // Create a momentary burst
+            for (let i = 0; i < 50; i++) {
+                createParticle();
+            }
+            // Run animation for a short time
+            const tempInterval = setInterval(updateConfetti, 20);
+            setTimeout(() => {
+                clearInterval(tempInterval);
+                ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+                particles = [];
+            }, 2000);
+        }
+
+        window.addEventListener('resize', () => {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        });
+
     </script>
 </body>
+
 </html>
